@@ -1,0 +1,1 @@
+{"level":"error","message":"\u001b[38m No mongo connection string. Set MONGODB_URI environment variable. \u001b[0m","timestamp":"2022-07-26 13:25:49"}
