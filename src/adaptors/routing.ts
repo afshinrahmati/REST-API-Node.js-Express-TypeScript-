@@ -1,11 +1,9 @@
-import express, { Request, Response, Router as ExpressRouter,Express } from "express";
+import express, { Express } from "express";
+import validate from "../middleware/validateResource";
+import { RequestMethod } from "../types/global";
+import { createUserHandler } from "../controller/user.controller";
+import { createUserSchema } from "../schema/user.schema";
 
-import {RequestMethod} from "../types/global";
-
-
-export function routes(app:Express,method:RequestMethod,path:string){
-    // @ts-ignore
-    app[method.toLowerCase()]("/",(req:Request,res:Response)=>{
-        res.send("cascsac")
-    })
+export function routes(app: Express) {
+  app.post("/api/users", validate(createUserSchema), createUserHandler);
 }
