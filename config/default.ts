@@ -6,4 +6,6 @@ export default {
     "Generate a random key based on the specified hashing algorithm and given length.",
   privateKey:
     "PRIVET a random key based on the specified hashing algorithm and given length.",
+  accessTokenTtl: "15m",
+  refreshTokenTtl: "1y",
 };

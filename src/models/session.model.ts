@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
-import config from "config";
 
 import { UserDocument } from "./user.model";
 interface base {
   user: UserDocument["_id"];
-  valid: string;
+  valid: boolean;
 }
 export interface SchemaDocument extends base, mongoose.Document {
   createdAt: Date;
