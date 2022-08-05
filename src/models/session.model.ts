@@ -5,7 +5,7 @@ interface base {
   user: UserDocument["_id"];
   valid: boolean;
 }
-export interface SchemaDocument extends base, mongoose.Document {
+export interface SessionDocument extends base, mongoose.Document {
   createdAt: Date;
   updatedAt: Date;
 }
