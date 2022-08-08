@@ -23,7 +23,7 @@ export async function createUserSessionHandler(req: Request, res: Response) {
 
   const refreshToken = signJwt(
     { ...user, session: session._id },
-    { expiresIn: config.get("accessTokenTtl") }
+    { expiresIn: config.get("refreshTokenTtl") }
   );
 
   return res.send({ accessToken, refreshToken });
@@ -32,7 +32,7 @@ export async function createUserSessionHandler(req: Request, res: Response) {
 export async function getUserSessionHandler(req: Request, res: Response) {
   try {
     const userId = res.locals.user._id;
-    const session = await findSession({ user: userId, valid: false });
+    const session = await findSession({ user: userId, valid: true });
     return res.send(session);
   } catch (e: any) {
     return res.status(400).send("ERROR SERVER");
@@ -40,7 +40,6 @@ export async function getUserSessionHandler(req: Request, res: Response) {
 }
 
 export async function deleteSessionHandler(req: Request, res: Response) {
-  console.log(22);
   
   const sessionId = res.locals.user.session;
   await updateSession({ _id: sessionId }, { valid: false });

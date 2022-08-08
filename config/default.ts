@@ -3,9 +3,9 @@ export default {
   isMongoClient: "mongodb://localhost:27017/rest-api-express",
   saltWorkFactor: 10,
   publicKey:
-    "Generate a random key based on the specified hashing algorithm and given length.",
+    "amosshhshshshsshshsshshshhshshshshshshshshshshshshhhshsh",
   privateKey:
-    "PRIVET a random key based on the specified hashing algorithm and given length.",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   accessTokenTtl: "15m",
   refreshTokenTtl: "1y",
 };

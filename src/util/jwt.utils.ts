@@ -4,11 +4,15 @@ const publicKey = config.get<string>("publicKey");
 const privateKey = config.get<string>("privateKey");
 
 const signJwt = (object: Object, options?: jwt.SignOptions | undefined) => {
-  return jwt.sign(object, privateKey, { ...options });
+   const token = jwt.sign(object, publicKey, { ...options });  
+   return token
 };
 const verifyJwt = (token: string) => {
   try {
+    
     const decoded = jwt.verify(token, publicKey);
+
+    
     return {
       valid: true,
       decoded,
@@ -17,7 +21,7 @@ const verifyJwt = (token: string) => {
   } catch (e: any) {
     return {
       valid: false,
-      expired: e.message === "Jwt Expired",
+      expired: e.message === "jwt expired",
       decoded: null,
     };
   }

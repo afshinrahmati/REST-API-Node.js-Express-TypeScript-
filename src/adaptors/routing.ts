@@ -9,6 +9,18 @@ import {
 } from "../controller/session.controller";
 import { createSessionSchema } from "../schema/session.schema";
 import requireUser from "../middleware/requireUser";
+import {
+  createProductSchema,
+  deleteProductSchema,
+  getProductSchema,
+  updateProductSchema,
+} from "../schema/product.schema";
+import {
+  createProductHandler,
+  deleteProductHandler,
+  getProductHandler,
+  updateProductHandler,
+} from "../controller/product.controller";
 
 export function routes(app: Express) {
   app.post("/api/users", validate(createUserSchema), createUserHandler);
@@ -19,4 +31,24 @@ export function routes(app: Express) {
   );
   app.get("/api/sessions", requireUser, getUserSessionHandler);
   app.delete("/api/sessions", requireUser, deleteSessionHandler);
+
+  app.post(
+    "/api/products",
+    [requireUser, validate(createProductSchema)],
+    createProductHandler
+  );
+
+  app.put(
+    "/api/products",
+    [requireUser, validate(updateProductSchema)],
+    updateProductHandler
+  );
+
+  app.get("/api/products", validate(getProductSchema), getProductHandler);
+
+  app.delete(
+    "/api/products",
+    [requireUser, validate(deleteProductSchema)],
+    deleteProductHandler
+  );
 }
