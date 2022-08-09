@@ -4,7 +4,10 @@
 3)yarn add @types/body-parser @types/mongoose @types/config @types/cors @types/express @types/node @types/pino @types/bcrypt @types/jsonwebtoken @types/lodash @types/nanoid ts-node-dev typescript -D
 4)npx tsc --init
 
-
+FOR TEST 
+1) yarn add supertest jest ts-jest @types/superttest -D
+2)yarn ts-jest config:init
+3) create directory __test__ on src
 
 
 

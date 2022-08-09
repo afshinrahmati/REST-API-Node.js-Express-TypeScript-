@@ -39,15 +39,15 @@ export function routes(app: Express) {
   );
 
   app.put(
-    "/api/products",
+    "/api/products/:productId",
     [requireUser, validate(updateProductSchema)],
     updateProductHandler
   );
 
-  app.get("/api/products", validate(getProductSchema), getProductHandler);
+  app.get("/api/products/:productId", validate(getProductSchema), getProductHandler);
 
   app.delete(
-    "/api/products",
+    "/api/products/:productId",
     [requireUser, validate(deleteProductSchema)],
     deleteProductHandler
   );
